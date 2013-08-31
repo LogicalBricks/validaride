@@ -11,11 +11,11 @@ module XsdFactory
   private
 
   def self.path_xsd_2_0
-    'xsds/ide_20080818.xsd'
+    'xsds/ide_20130430.xsd'
   end
 
   def self.path_xsd_1_1
-    'xsds/ide_20130430.xsd'
+    'xsds/ide_20080818.xsd'
   end
 end
 
