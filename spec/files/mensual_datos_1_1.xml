@@ -1,0 +1,35 @@
+<DeclaracionInformativaMensualIDE version="1.1" rfcDeclarante="AAA111111AB0" denominacion="Caja de Prueba S.A. de C.V.">
+  <RepresentanteLegal rfc="AAAA111111AA0" curp="AAAA111111MDFBBB01">
+    <Nombre>
+      <Nombres>Juan</Nombres>
+      <PrimerApellido>Perez</PrimerApellido>
+      <SegundoApellido>Lopez</SegundoApellido>
+    </Nombre>
+  </RepresentanteLegal>
+  <Normal ejercicio="2012" periodo="8"></Normal>
+  <InstitucionDeCredito>
+    <ReporteDeRecaudacionYEnteroDiaria fechaDeCorte="2012-08-15">
+	<RegistroDeDetalle>
+	  <PersonaFisica rfc="AAAA111111DDD" curp="AAAA111111HOCBBB01">
+	    <Nombre>
+	      <Nombres>Pedro</Nombres>
+	      <PrimerApellido>Ramirez</PrimerApellido>  
+	      <SegundoApellido>Sanchez</SegundoApellido>
+	    </Nombre>
+	    <Domicilio>
+	      <Calle>Conocida</Calle>
+	      <NoExterior>01</NoExterior>
+	      <NoInterior>11</NoInterior>
+	      <Colonia>Conocida</Colonia>
+	      <CodigoPostal>71200</CodigoPostal>
+	    </Domicilio>
+	  </PersonaFisica>
+	  <DepositoEnEfectivo montoExcedente="101" impuestoDeterminado="102" impuestoRecaudado="103" recaudacionPendiente="104" remanentePeriodosAnteriores="105"></DepositoEnEfectivo>
+          <ChequeDeCaja montoCheque="201" montoRecaudado="202"></ChequeDeCaja>
+	</RegistroDeDetalle>        
+	<EnteroPropio fechaEntero="2012-05-15" noOperacion="409" nombreInstitucion="Bancomer" rfcInstitucion="BAN23445FD12" impuestoEnterado="100"></EnteroPropio>        
+	<EnteroDeOtrasInstituciones nombreInstitucion="Bancomer" rfcInstitucion="ABAS12345678" impuestoEnterado="120" fechaRecepcion="2012-02-12" noOperacion="234"></EnteroDeOtrasInstituciones>
+      </ReporteDeRecaudacionYEnteroDiaria>
+    <Totales operacionesRelacionadas="0" importeExcedenteDepositos="0" importeDeterminadoDepositos="0" importeRecaudadoDepositos="0" importePendienteRecaudacion="0" importeRemanenteDepositos="0" importeEnterado="0" importeCheques="0"/>
+  </InstitucionDeCredito>
+</DeclaracionInformativaMensualIDE>  

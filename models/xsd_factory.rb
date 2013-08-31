@@ -18,4 +18,3 @@ module XsdFactory
     'xsds/ide_20080818.xsd'
   end
 end
-
