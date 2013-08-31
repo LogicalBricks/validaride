@@ -1,0 +1,1313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="DeclaracionInformativaMensualIDE">
+		<xs:annotation>
+			<xs:documentation>Nodo primario para el formato de la declaración informativa mensual de IDE</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RepresentanteLegal" type="tRepresentante"/>
+				<xs:choice>
+					<xs:element name="Normal" type="tDeclaracionMensual">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para expresar la información básica de la declaración cuando se trata de una declaración normal. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Complementaria">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para expresar la información básica de la declaración cuando se trata de una declaración complementara.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="tDeclaracionMensual">
+									<xs:attribute name="opAnterior" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo obligatorio para la expresión del folio o número de referencia asignado a la declaración anterior sujeta a ser complementada mediante la presente declaración.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="fechaPresentacion" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo obligatorio para la expresión de la fecha de presentación de la declaración anterior sujeta a ser complementada mediante la presente declaración. La fecha deberá ser expresada mediante el tipo xs:date definido por el estándar XML.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:date">
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+				<xs:choice>
+					<xs:element name="InstitucionDeCredito">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para la expresión del detalle de recaudación de IDE, realizadas por instituciones de crédito.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ReporteDeRecaudacionYEnteroDiaria" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para expresar el conjunto de registros de detalle de recaudación y entero correspondientes a una fecha dada.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="RegistroDeDetalle" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Nodo definido para la expresión de la información de un registro de causación y/o recaudación de IDE.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:choice>
+															<xs:element name="PersonaFisica" type="tPersonaFisica">
+																<xs:annotation>
+																	<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona física.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="PersonaMoral" type="tPersonaMoral">
+																<xs:annotation>
+																	<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona moral.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:choice>
+														<xs:sequence>
+															<xs:element name="DepositoEnEfectivo" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Nodo definido para la expresión de la información referente a la causación y/o recaudación por concepto de depósitos en efectivo</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:extension base="tDepositoEfectivo">
+																			<xs:attribute name="remanentePeriodosAnteriores" use="required">
+																				<xs:annotation>
+																					<xs:documentation>Atributo obligatorio para expresar el monto de recaudacion realizada sobre causación periodos anteriores</xs:documentation>
+																				</xs:annotation>
+																				<xs:simpleType>
+																					<xs:restriction base="xs:long">
+																						<xs:minInclusive value="0"/>
+																						<xs:maxInclusive value="999999999999"/>
+																						<xs:whiteSpace value="collapse"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="ChequeDeCaja" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Nodo definido para la expresión de la información referente a la recaudación por concepto de compra de cheques de caja</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:attribute name="montoCheque" use="required">
+																		<xs:annotation>
+																			<xs:documentation>Atributo obligatorio para la expresión del monto del cheque de caja, pagado en efectivo</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:long">
+																				<xs:minInclusive value="0"/>
+																				<xs:maxInclusive value="999999999999"/>
+																				<xs:fractionDigits value="0"/>
+																				<xs:whiteSpace value="collapse"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																	<xs:attribute name="montoRecaudado" use="required">
+																		<xs:annotation>
+																			<xs:documentation>Atributo obligatorio para la expresión del monto recaudado por concepto de cheque de caja.</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:long">
+																				<xs:minInclusive value="0"/>
+																				<xs:maxInclusive value="999999999999"/>
+																				<xs:fractionDigits value="0"/>
+																				<xs:whiteSpace value="collapse"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="EnteroPropio" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Nodo definido para la expresión de un entero propio a la federación</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="tEntero">
+															<xs:attribute name="nombreInstitucion" use="optional">
+																<xs:annotation>
+																	<xs:documentation>Atributo opcional para expresar la denominación o razón social de la institución de crédito, auxiliar de la TESOFE, mediante la cual se realiza el entero a la federación. Su uso se convierte en obligatorio para las instituciones de crédito distintas de las auxiliares de la TESOFE.</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:minLength value="1"/>
+																		<xs:whiteSpace value="collapse"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+															<xs:attribute name="rfcInstitucion" use="optional">
+																<xs:annotation>
+																	<xs:documentation>Atributo opcional para expresar el RFC de la institución de crédito, auxiliar de la TESOFE, mediante la cual se realiza el entero a la federación. Su uso se convierte en obligatorio para las instituciones de crédito distintas de las auxiliares de la TESOFE.</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:whiteSpace value="collapse"/>
+																		<xs:minLength value="1"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="EnteroDeOtrasInstituciones" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Nodo definido para la expresión de la información de enteros ejecutados por cuenta de instituciones distintas de las auxiliares de la tesofe</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attribute name="nombreInstitucion" use="required">
+														<xs:annotation>
+															<xs:documentation>Atributo obligatorio para expresar la denominación o razón social de la institución a la que se le presta el servicio de entero a la TESOFE.</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+																<xs:whiteSpace value="collapse"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:attribute>
+													<xs:attribute name="rfcInstitucion" use="required">
+														<xs:annotation>
+															<xs:documentation>Atributo obligatorio para expresar el RFC de la institución a la que se le presta el servicio de entero a la TESOFE.</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+																<xs:whiteSpace value="collapse"/>
+																<xs:maxLength value="12"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:attribute>
+													<xs:attribute name="impuestoEnterado" use="required">
+														<xs:annotation>
+															<xs:documentation>Atributo obligatorio para la expresión del importe del impuesto enterado por cuenta de la institución a la que se le presta el servicio de entero a la TESOFE.</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:long">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="999999999999"/>
+																<xs:whiteSpace value="collapse"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:attribute>
+													<xs:attribute name="fechaRecepcion" use="required">
+														<xs:annotation>
+															<xs:documentation>Atributo obligatorio para la expresión de la fecha en que se recibe el monto a enterar por parte de la institución a la que se le presta el servicio de entero a la TESOFE.</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:date">
+																<xs:whiteSpace value="collapse"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:attribute>
+													<xs:attribute name="noOperacion" use="required">
+														<xs:annotation>
+															<xs:documentation>Atributo obligatorio para la expresión del número o clave de referencia que ampara la transacción. Emitido por la institución auxiliar de la TESOFE a la institución a la que se le presta el servicio de entero.</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:whiteSpace value="collapse"/>
+																<xs:minLength value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="fechaDeCorte" use="required">
+											<xs:annotation>
+												<xs:documentation>Atributo obligatorio para la expresión de la fecha de corte de la que se deriva la recaudación y entero correspondiente.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:date">
+													<xs:whiteSpace value="collapse"/>
+													<xs:minInclusive value="2008-07-01"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Totales">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para la expresión de totales correspondientes a las operaciones reportadas mediante la declaración.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="tTotales">
+												<xs:attribute name="importeCheques" use="required">
+													<xs:annotation>
+														<xs:documentation>Atributo obligatorio para expresar el monto total recaudado por concepto de cheques de caja pagados en efectivo.</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="xs:long">
+															<xs:minInclusive value="0"/>
+															<xs:maxInclusive value="99999999999999"/>
+															<xs:whiteSpace value="collapse"/>
+															<xs:fractionDigits value="0"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="InstitucionDistintaDeCredito">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para la expresión del detalle de recaudación de IDE, realizadas por instituciones distintas a las de crédito.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ReporteDeRecaudacionYEnteroDiaria" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para expresar el conjunto de registros de detalle de recaudación y entero correspondientes a una fecha dada.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="RegistroDeDetalle" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Nodo definido para la expresión de la información de un registro de causación y/o recaudación de IDE.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:choice>
+															<xs:element name="PersonaFisica" type="tPersonaFisica">
+																<xs:annotation>
+																	<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona física.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="PersonaMoral" type="tPersonaMoral">
+																<xs:annotation>
+																	<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona moral.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:choice>
+														<xs:element name="DepositoEnEfectivo">
+															<xs:annotation>
+																<xs:documentation>Nodo definido para la expresión de la información referente a la causación y/o recaudación por concepto de depósitos en efectivo</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:complexContent>
+																	<xs:extension base="tDepositoEfectivo">
+																		<xs:attribute name="remanentePeriodosAnteriores" use="required">
+																			<xs:annotation>
+																				<xs:documentation>Atributo obligatorio para expresar el monto de recaudacion realizada sobre causación periodos anteriores</xs:documentation>
+																			</xs:annotation>
+																			<xs:simpleType>
+																				<xs:restriction base="xs:long">
+																					<xs:minInclusive value="0"/>
+																					<xs:maxInclusive value="999999999999"/>
+																					<xs:whiteSpace value="collapse"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:attribute>
+																	</xs:extension>
+																</xs:complexContent>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="EnteroPropio" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Nodo definido para la expresión de un entero propio a la federación</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="tEntero">
+															<xs:attribute name="nombreInstitucion" use="required">
+																<xs:annotation>
+																	<xs:documentation>Atributo obligatiorio para expresar la denominación o razón social de la institución de crédito, auxiliar de la TESOFE, mediante la cual se realiza el entero a la federación</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:minLength value="1"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+															<xs:attribute name="rfcInstitucion" type="xs:string" use="required">
+																<xs:annotation>
+																	<xs:documentation>Atributo obligatorio para expresar el RFC de la institución de crédito, auxiliar de la TESOFE, mediante la cual se realiza el entero a la federación</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="fechaDeCorte" use="required">
+											<xs:annotation>
+												<xs:documentation>Atributo obligatorio para la expresión de la fecha de corte de la que se deriva la recaudación y entero correspondiente.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:date">
+													<xs:whiteSpace value="collapse"/>
+													<xs:minInclusive value="2008-07-01"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Totales" type="tTotales">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para la expresión de totales correspondientes a las operaciones reportadas mediante la declaración.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="version" use="required" fixed="1.1">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para expresar la versión del formato</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="rfcDeclarante" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo obligatorio para la expresión del RFC de la institución declarante.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="tRFC">
+						<xs:maxLength value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="denominacion" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo obligatio para la expresión de la denominación o razón social de la institución declarante.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="tRFC">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para la expresión de RFC's de contribuyentes. Cabe hacer la mención que debido a las reglas definidas por el estándar XML en el caso de que un RFC dado incluya un caracter ampersand, dicho caracter deberá ser expresado mediante la secuencia de escape especificado como parte del estándar. En la definición del tipo se expresa una longitud mínima y máxima, sin embargo la longitud puede ser redefinida como una extensión según se determina el uso particular</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="9"/>
+			<xs:maxLength value="13"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[A-Z,Ñ,&amp;]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tCURP">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para la expresión de una CURP. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:length value="18"/>
+			<xs:pattern value="[A-Z][A,E,I,O,U,X][A-Z]{2}[0-9]{2}[0-1][0-9][0-3][0-9][M,H][A-Z]{2}[B,C,D,F,G,H,J,K,L,M,N,Ñ,P,Q,R,S,T,V,W,X,Y,Z]{3}[0-9,A-Z][0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="tDeclaracionMensual">
+		<xs:annotation>
+			<xs:documentation>Tipo base para la definición del tipo de declaración mensual</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ejercicio" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el ejercicio a que corresponde la declaración realizada mediante el presente formato.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="2008"/>
+					<xs:totalDigits value="4"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="periodo" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el periodo a que corresponde la declaración realizada. Se expresará el periodo como el equivalente numérico del mes sin considerar 0 a la izquierda.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="12"/>
+					<xs:whiteSpace value="collapse"/>
+					<xs:fractionDigits value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tDeclaracionAnual">
+		<xs:annotation>
+			<xs:documentation>Tipo base para la definición del tipo de declaración anual</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ejercicio" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el ejercicio a que corresponde la declaración realizada mediante el presente formato.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="2008"/>
+					<xs:totalDigits value="4"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tDepositoEfectivo">
+		<xs:annotation>
+			<xs:documentation>Tipo base para la expresión de los montos retenidos por depósitos en efectivo</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="montoExcedente" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del monto excedente que causa el impuesto</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="999999999999"/>
+					<xs:whiteSpace value="collapse"/>
+					<xs:fractionDigits value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="impuestoDeterminado" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el monto del impuesto determinado, equivalente al resultado de la aplicación de la tasa establecida en la ley, sobre monto excedente.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="impuestoRecaudado" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el monto del impuesto recaudado.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="999999999999"/>
+					<xs:whiteSpace value="collapse"/>
+					<xs:fractionDigits value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="recaudacionPendiente" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el monto pendiente a recaudar.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="999999999999"/>
+					<xs:whiteSpace value="collapse"/>
+					<xs:fractionDigits value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tPersonaFisica">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de la información de identidad de la persona física.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Nombre">
+				<xs:annotation>
+					<xs:documentation>Nodo obligatorio para la expresión del nombre del contribuyente reportado</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="NombreCompleto">
+							<xs:annotation>
+								<xs:documentation>Nodo para expresar el nombre completo del contribuyente reportado cuando resulta imposible su separación en sus componentes</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:sequence>
+							<xs:element name="Nombres">
+								<xs:annotation>
+									<xs:documentation>Nodo definido para expresar el o los nombres del contribuyente reportado</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="40"/>
+										<xs:whiteSpace value="collapse"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PrimerApellido">
+								<xs:annotation>
+									<xs:documentation>Nodo definido para expresar el primer apellido del contribuyente reportado</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="40"/>
+										<xs:whiteSpace value="collapse"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SegundoApellido" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Nodo definido para expresar el segundo apellido del contribuyente reportado </xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="40"/>
+										<xs:whiteSpace value="collapse"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Domicilio" type="tDireccion" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Nodo opcional para la expresión del domicilio del contribuyente reportado. Su uso se convierte en obligatorio en el caso de registros de depósito en efectivo.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="rfc" use="optional">
+			<xs:annotation>
+				<xs:documentation>Atributo opcional para la expresión del RFC del contribuyente reportado</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="tRFC">
+					<xs:minLength value="10"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="curp" type="tCURP" use="optional">
+			<xs:annotation>
+				<xs:documentation>Atributo opcional para la expresión de la CURP del contribuyente reportado</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tPersonaMoral">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de la información de identidad de la persona moral.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Denominacion">
+				<xs:annotation>
+					<xs:documentation>Nodo obligatorio para la expresión de la denominación o razón social del contribuyente reportado</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Domicilio" type="tDireccion" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Nodo opcional para la expresión del domicilio del contribuyente reportado. Su uso se convierte en obligatorio en el caso de registros de depósito en efectivo.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="rfc" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del RFC del contribuyente reportado</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="tRFC">
+					<xs:maxLength value="12"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tEntero">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de la información de enteros a la federación</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="fechaEntero" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión de la fecha de entrega. En el caso de las instituciones auxiliares de la TESOFE se entederá como la fecha en que se registra el pago en la cuenta de la TESOFE. En caso contrario se entenderá como la fecha de entrega a una institución auxiliar de la TESOFE.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:date">
+					<xs:minInclusive value="2008-07-01"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="impuestoEnterado" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del monto del impuesto enterado a la federación derivado de la recaudación ejercida por la institución de crédito</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="999999999999"/>
+					<xs:whiteSpace value="collapse"/>
+					<xs:fractionDigits value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="noOperacion" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del número de folio o clave con el cual queda registrada la operación.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tTotales">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de totales de la declaración mensual</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="operacionesRelacionadas" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del total de operaciones de contribuyentes reportados relacionadas en el periodo</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="9999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeExcedenteDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del importe total de los montos de depositos en efectivo que causan el impuesto.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeDeterminadoDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del total del impuesto determinado, derivado de los depositos en efectivo del periodo.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeRecaudadoDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del total del impuesto recaudado derivados de los depósitos en efectivo del periodo.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importePendienteRecaudacion" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del importe del impuesto pendiente de recaudar, derivado de depósitos en efectivo del periodo.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeRemanenteDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del importe del impuesto recaudado, derivado de remanentes sobre depósitos en efectivo pendientes de recaudar del periodo o periodos anteriores.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeEnterado" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el monto total de impuestos enterados derivados de la recudación realizada por la institución.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tTotalesAnual">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de totales de la declaración anual</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="operacionesRelacionadas" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del total de contribuyentes relacionadas mediante la presente declaración</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="9999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeExcedenteDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del total de los montos excedentes derivados de depósitos en efectivo de personas físicas y morales que han sido reportadas mediante la presente declaración</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeDeterminadoDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del total del impuesto determinado derivado de los depósitos en efectivo reportados mediante la presente declaración</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importeRecaudadoDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del total de impuestos recaudados derivados de los depósitos en efectivo reportados mediante la presente declaración</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="importePendienteDepositos" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del importe del impuesto pendiente de recaudar derivado de depósitos en efectivo reportados mediante la presente declaración.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="DeclaracionInformativaAnualIDE">
+		<xs:annotation>
+			<xs:documentation>Nodo primario para el formato de la declaración informativa anual de IDE</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RepresentanteLegal" type="tRepresentante"/>
+				<xs:choice>
+					<xs:element name="Normal" type="tDeclaracionAnual">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para expresar la información básica de la declaración cuando se trata de una declaración normal. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Complementaria">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para expresar la información básica de la declaración cuando se trata de una declaración complementara.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="tDeclaracionAnual">
+									<xs:attribute name="opAnterior" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo obligatorio para la expresión del folio o número de referencia asignado a la declaración anterior sujeta a ser complementada mediante la presente declaración.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="fechaPresentacion" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo obligatorio para la expresión de la fecha de presentación de la declaración anterior sujeta a ser complementada mediante la presente declaración. La fecha deberá ser expresada mediante el tipo xs:date definido por el estándar XML.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:date">
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+				<xs:choice>
+					<xs:element name="InstitucionDeCredito">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para la expresión del detalle de recaudación de IDE, realizadas por instituciones de crédito.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="RegistroDeDetalle" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para la expresión de la información de un registro de causación y/o recaudación de IDE.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:choice>
+												<xs:element name="PersonaFisica" type="tPersonaFisica">
+													<xs:annotation>
+														<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona física.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="PersonaMoral" type="tPersonaMoral">
+													<xs:annotation>
+														<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona moral.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:choice>
+											<xs:element name="DepositoEnEfectivo">
+												<xs:annotation>
+													<xs:documentation>Nodo obligatorio definido para la expresión de la información referente a la recaudación por concepto de depósitos en efectivo</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="tDepositoEfectivo">
+															<xs:sequence>
+																<xs:element name="Cuenta" type="tCuenta" minOccurs="0" maxOccurs="unbounded">
+																	<xs:annotation>
+																		<xs:documentation>Nodo definido para la expresión de la información de cada una de las cuentas correspondientes al contribuyente reportado en donde presenten depósitos en efectivo y/o la recaudación del IDE.</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+															</xs:sequence>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Totales" type="tTotalesAnual">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para la expresión de totales correspondientes a las operaciones reportadas mediante la declaración.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="InstitucionDistintaDeCredito">
+						<xs:annotation>
+							<xs:documentation>Nodo definido para la expresión del detalle de recaudación de IDE, realizadas por instituciones distintas a las de crédito.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="RegistroDeDetalle" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para la expresión de la información de un registro de causación y/o recaudación de IDE.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:choice>
+												<xs:element name="PersonaFisica" type="tPersonaFisica">
+													<xs:annotation>
+														<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona física.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="PersonaMoral" type="tPersonaMoral">
+													<xs:annotation>
+														<xs:documentation>Nodo definido para la expresión de la información de identificación de la persona moral.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:choice>
+											<xs:element name="DepositoEnEfectivo">
+												<xs:annotation>
+													<xs:documentation>Nodo definido para la expresión de la información referente a retenciones por concepto de depósitos en efectivo.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="tDepositoEfectivo">
+															<xs:sequence>
+																<xs:element name="Cuenta" type="tCuenta" maxOccurs="unbounded">
+																	<xs:annotation>
+																		<xs:documentation>Nodo definido para la expresión de la información de cada una de las cuentas correspondientes al contribuyente reportado en donde presenten depósitos en efectivo y/o la recaudación del IDE.</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+															</xs:sequence>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Totales" type="tTotalesAnual">
+									<xs:annotation>
+										<xs:documentation>Nodo definido para la expresión de totales correspondientes a las operaciones reportadas mediante la declaración.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="version" use="required" fixed="1.1">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para expresar la versión del formato</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="rfcDeclarante" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo obligatorio para la expresión del RFC de la institución declarante.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="tRFC">
+						<xs:maxLength value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="denominacion" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo obligatorio para la expresión de la denominación o razón social de la institución declarante.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="tCuenta">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de los datos de cuentas a las que se aplique la recaudación del IDE</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Movimiento" type="tOperacion" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Nodo definido para la expresión de los movimientos ejecutados desde la cuenta reportada</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="numeroCuenta" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del número o clave que identifica la cuenta o contrato reportado</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="cotitulares" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el número de cotitulares que el titular de la cuenta indique. Se trata de un número entero positivo. El valor deberá ser 0 cuando no existan cotitulares designados.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:minInclusive value="0"/>
+					<xs:fractionDigits value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="proporcion" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio definido para la expresión de la proporcion de la cuenta que corresponde al contribuyente informado. En caso de no existir cotitulares, su valor deberá ser 100.0000. De acuerdo con el Código Fiscal de la Federación, la proporción debera calcularse hasta el diez milésimo.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="100"/>
+					<xs:fractionDigits value="4"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="impuestoRecaudado" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para expresar el importe monetario proveniente de la cuenta reportada para cubrir el impuesto recaudado.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="999999999999"/>
+					<xs:whiteSpace value="collapse"/>
+					<xs:fractionDigits value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tOperacion">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de los datos que conforman una operación de depósito gravada</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="tipoOperacion" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del tipo de operación reportado. En el caso de que se trate de una operación de depósito en efectivo se expresará el valor deposito y en el caso de una operación de retiro por concepto de recaudación del ide se usará el valor retiro </xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:whiteSpace value="collapse"/>
+					<xs:enumeration value="deposito"/>
+					<xs:enumeration value="retiro"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="fechaOperacion" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión de la fecha de operación. Su valor deberá ser menor o igual a la fecha de llenado y no menor al primero de julio del 2008</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:date">
+					<xs:minInclusive value="2008-07-01"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="montoOperacion" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del monto de la operación. Se trata de un entero positivo</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:long">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="999999999999"/>
+					<xs:fractionDigits value="0"/>
+					<xs:whiteSpace value="collapse"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tDireccion">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de direcciones o domicilios</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="DomicilioCompleto">
+				<xs:annotation>
+					<xs:documentation>Nodo definido para la expresión de un domicilio o dirección cuando resulte imposible subdividirla en sus componentes</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:sequence>
+				<xs:element name="Calle">
+					<xs:annotation>
+						<xs:documentation>Nodo definido para la expresión del fragmento calle de la dirección.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:whiteSpace value="collapse"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="NoExterior" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Nodo definido para la expresión del fragmento del número exterior de la dirección.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:whiteSpace value="collapse"/>
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="NoInterior" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Nodo definido para la expresión del fragmento del número interior de la dirección.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:whiteSpace value="collapse"/>
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Colonia">
+					<xs:annotation>
+						<xs:documentation>Nodo definido para la expresión del fragmento de la colonia o municipio de la dirección.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:whiteSpace value="collapse"/>
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CodigoPostal">
+					<xs:annotation>
+						<xs:documentation>Nodo definido para la expresión del fragmento código postal de la dirección.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:whiteSpace value="collapse"/>
+							<xs:minLength value="5"/>
+							<xs:maxLength value="6"/>
+							<xs:pattern value="[0-9]{5,6}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="tRepresentante">
+		<xs:annotation>
+			<xs:documentation>Tipo base definido para la expresión de los datos de identidad del representante legal</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Nombre">
+				<xs:annotation>
+					<xs:documentation>Nodo obligatorio para la expresión del nombre del representante legal</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="NombreCompleto">
+							<xs:annotation>
+								<xs:documentation>Nodo para expresar el nombre completo del representante legal cuando resulta imposible su separación en sus componentes</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:sequence>
+							<xs:element name="Nombres">
+								<xs:annotation>
+									<xs:documentation>Nodo definido para expresar el o los nombres del representante legal</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="40"/>
+										<xs:whiteSpace value="collapse"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PrimerApellido">
+								<xs:annotation>
+									<xs:documentation>Nodo definido para expresar el primer apellido del representante legal</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="40"/>
+										<xs:whiteSpace value="collapse"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SegundoApellido" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Nodo definido para expresar el segundo apellido del representante legal</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="40"/>
+										<xs:whiteSpace value="collapse"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="rfc" use="required">
+			<xs:annotation>
+				<xs:documentation>Atributo obligatorio para la expresión del RFC del representante legal</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="tRFC">
+					<xs:minLength value="13"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="curp" type="tCURP" use="optional">
+			<xs:annotation>
+				<xs:documentation>Atributo opcional para la expresión de la CURP del representante legal.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>
