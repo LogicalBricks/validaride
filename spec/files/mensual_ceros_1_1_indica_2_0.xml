@@ -1,0 +1,13 @@
+<DeclaracionInformativaMensualIDE version="2.0" rfcDeclarante="AAA111111AB0" denominacion="Caja de Prueba S.A. de C.V.">
+  <RepresentanteLegal rfc="AAAA111111AA0" curp="AAAA111111MDFBBB01">
+    <Nombre>
+      <Nombres>Juan</Nombres>
+      <PrimerApellido>Perez</PrimerApellido>
+      <SegundoApellido>Lopez</SegundoApellido>
+    </Nombre>
+  </RepresentanteLegal>
+  <Normal ejercicio="2012" periodo="8"></Normal>
+  <InstitucionDeCredito>
+    <Totales operacionesRelacionadas="0" importeExcedenteDepositos="0" importeDeterminadoDepositos="0" importeRecaudadoDepositos="0" importePendienteRecaudacion="0" importeRemanenteDepositos="0" importeEnterado="0" importeCheques="0"/>
+  </InstitucionDeCredito>
+</DeclaracionInformativaMensualIDE>  
