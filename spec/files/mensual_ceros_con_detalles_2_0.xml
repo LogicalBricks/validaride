@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeclaracionInformativaMensualIDE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ide_20130430.xsd" version="2.0" rfcDeclarante="AAA111111AB0" denominacion="Caja de Prueba S.A. de C.V.">
+	<RepresentanteLegal rfc="AAAA111111AA0" curp="AAAA111111MDFBBB01">
+	<Nombre>
+		<NombreCompleto>Juan Perez Lopez</NombreCompleto> 
+	</Nombre>
+</RepresentanteLegal><Normal ejercicio="2013" periodo="7"/><InstitucionDeCredito>
+		<ReporteDeRecaudacionYEnteroDiaria fechaDeCorte="2013-07-31"><RegistroDeDetalle><PersonaFisica rfc="XAAA111111AB1" NumeroCliente="193" correoElectronico="un@correo.com" telefono1="000003467636754" telefono2="000000000000000">
+	<Nombre>
+		<NombreCompleto>MARIA JIMENEZ CRUZ</NombreCompleto>
+	</Nombre>
+	
+<numeroCuenta>430</numeroCuenta></PersonaFisica><DepositoEnEfectivo montoExcedente="85000" impuestoDeterminado="2550" impuestoRecaudado="2550" recaudacionPendiente="0" remanentePeriodosAnteriores="0" saldoPendienteRecaudar="0"/></RegistroDeDetalle><RegistroDeDetalle><PersonaFisica rfc="XAAA111111AB2" NumeroCliente="333" correoElectronico="un@correo.com" telefono1="008326345643670" telefono2="000000000000000">
+	<Nombre>
+		<NombreCompleto>MARIO SANCHEZ NIEVES</NombreCompleto>
+	</Nombre>
+	
+<numeroCuenta>34</numeroCuenta></PersonaFisica><DepositoEnEfectivo montoExcedente="75000" impuestoDeterminado="2250" impuestoRecaudado="2250" recaudacionPendiente="0" remanentePeriodosAnteriores="0" saldoPendienteRecaudar="0"/></RegistroDeDetalle><RegistroDeDetalle><PersonaFisica rfc="XAAA111111AB5" NumeroCliente="4444" correoElectronico="un@correo.com" telefono1="000008963462523" telefono2="000000000000000">
+	<Nombre>
+		<NombreCompleto>FERNANDO CARLOS SANCHEZ VILLALOBOS</NombreCompleto>
+	</Nombre>
+	
+	</InstitucionDeCredito>
+<numeroCuenta>353</numeroCuenta></PersonaFisica><DepositoEnEfectivo montoExcedente="22811" impuestoDeterminado="684" impuestoRecaudado="684" recaudacionPendiente="0" remanentePeriodosAnteriores="0" saldoPendienteRecaudar="0"/></RegistroDeDetalle><EnteroPropio nombreInstitucion="BANCO NACIONAL DE MEXICO SA" rfcInstitucion="EEE111111CC1" impuestoEnterado="5484" noOperacion="66666166" fechaRecaudacion="2013-07-31" fechaEntero="2013-08-01"/></ReporteDeRecaudacionYEnteroDiaria><Totales operacionesRelacionadas="0" importeExcedenteDepositos="0" importeDeterminadoDepositos="0" importeRecaudadoDepositos="0" importePendienteRecaudacion="0" importeRemanenteDepositos="0" importeEnterado="0" importeCheques="0" importeSaldoPendienteRecaudar="0"/>
+</DeclaracionInformativaMensualIDE>
