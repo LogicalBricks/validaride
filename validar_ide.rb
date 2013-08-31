@@ -20,7 +20,7 @@ class ValidarIde < Sinatra::Base
 
 
   get '/' do
-    haml :index
+    haml :index, format: :html5
   end
 
   post '/' do

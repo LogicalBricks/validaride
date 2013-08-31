@@ -1,5 +1,11 @@
 / Header and Nav
 .row
+  %nav.top-bar
+    %ul.title-area
+      %li.name
+        %h1
+          %a{href: '#'}ValidarIDE
+.row
   .large-3.columns
     %h1
       %img{:src => "http://placehold.it/400x100&text=Logo"}/
@@ -44,7 +50,10 @@
     %hr/
     .row
       .large-6.columns
-        %p © Copyright no one at all. Go to town.
+        %p
+          © Copyright
+          %a{href: 'http://logicalbricks.com'}LogicalBricks Solutions.
+          2013.
       .large-6.columns
         %ul.inline-list.right
           %li
@@ -55,12 +64,3 @@
             %a{:href => "#"} Link 3
           %li
             %a{:href => "#"} Link 4
-
-
-
-
-
-
-
-
-Test this shit
