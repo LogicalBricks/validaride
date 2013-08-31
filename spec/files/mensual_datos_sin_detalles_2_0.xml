@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeclaracionInformativaMensualIDE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ide_20130430.xsd" version="2.0" rfcDeclarante="AAA111111AB0" denominacion="Caja de Prueba S.A. de C.V.">
+	<RepresentanteLegal rfc="AAAA111111AA0" curp="AAAA111111MDFBBB01">
+	<Nombre>
+		<NombreCompleto>Juan Perez Lopez</NombreCompleto> 
+	</Nombre>
+</RepresentanteLegal><Normal ejercicio="2013" periodo="7"/><InstitucionDeCredito>
+	<Totales operacionesRelacionadas="3" importeExcedenteDepositos="182811" importeDeterminadoDepositos="5484" importeRecaudadoDepositos="5484" importePendienteRecaudacion="0" importeRemanenteDepositos="0" importeEnterado="5484" importeCheques="0" importeSaldoPendienteRecaudar="0"/>
+	</InstitucionDeCredito>
+</DeclaracionInformativaMensualIDE>
