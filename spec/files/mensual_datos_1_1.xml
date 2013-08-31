@@ -1,35 +1,19 @@
-<DeclaracionInformativaMensualIDE version="1.1" rfcDeclarante="AAA111111AB0" denominacion="Caja de Prueba S.A. de C.V.">
-  <RepresentanteLegal rfc="AAAA111111AA0" curp="AAAA111111MDFBBB01">
-    <Nombre>
-      <Nombres>Juan</Nombres>
-      <PrimerApellido>Perez</PrimerApellido>
-      <SegundoApellido>Lopez</SegundoApellido>
-    </Nombre>
-  </RepresentanteLegal>
-  <Normal ejercicio="2012" periodo="8"></Normal>
-  <InstitucionDeCredito>
-    <ReporteDeRecaudacionYEnteroDiaria fechaDeCorte="2012-08-15">
-	<RegistroDeDetalle>
-	  <PersonaFisica rfc="AAAA111111DDD" curp="AAAA111111HOCBBB01">
-	    <Nombre>
-	      <Nombres>Pedro</Nombres>
-	      <PrimerApellido>Ramirez</PrimerApellido>  
-	      <SegundoApellido>Sanchez</SegundoApellido>
-	    </Nombre>
-	    <Domicilio>
-	      <Calle>Conocida</Calle>
-	      <NoExterior>01</NoExterior>
-	      <NoInterior>11</NoInterior>
-	      <Colonia>Conocida</Colonia>
-	      <CodigoPostal>71200</CodigoPostal>
-	    </Domicilio>
-	  </PersonaFisica>
-	  <DepositoEnEfectivo montoExcedente="101" impuestoDeterminado="102" impuestoRecaudado="103" recaudacionPendiente="104" remanentePeriodosAnteriores="105"></DepositoEnEfectivo>
-          <ChequeDeCaja montoCheque="201" montoRecaudado="202"></ChequeDeCaja>
-	</RegistroDeDetalle>        
-	<EnteroPropio fechaEntero="2012-05-15" noOperacion="409" nombreInstitucion="Bancomer" rfcInstitucion="BAN23445FD12" impuestoEnterado="100"></EnteroPropio>        
-	<EnteroDeOtrasInstituciones nombreInstitucion="Bancomer" rfcInstitucion="ABAS12345678" impuestoEnterado="120" fechaRecepcion="2012-02-12" noOperacion="234"></EnteroDeOtrasInstituciones>
-      </ReporteDeRecaudacionYEnteroDiaria>
-    <Totales operacionesRelacionadas="0" importeExcedenteDepositos="0" importeDeterminadoDepositos="0" importeRecaudadoDepositos="0" importePendienteRecaudacion="0" importeRemanenteDepositos="0" importeEnterado="0" importeCheques="0"/>
-  </InstitucionDeCredito>
-</DeclaracionInformativaMensualIDE>  
+<?xml version="1.0" encoding="UTF-8"?>
+<DeclaracionInformativaMensualIDE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ide_20080818.xsd" version="1.1" rfcDeclarante="CAF020826YYY" denominacion="Caja Ficticia">
+	<RepresentanteLegal rfc="OERH830104ST0" curp="OERH830104MDMRZR05">
+	<Nombre>
+		<NombreCompleto>Hermes Ojeda Ruiz</NombreCompleto> 
+	</Nombre>
+</RepresentanteLegal><Normal ejercicio="2012" periodo="1"/><InstitucionDeCredito>
+		<ReporteDeRecaudacionYEnteroDiaria fechaDeCorte="2011-01-27"><RegistroDeDetalle><PersonaFisica rfc="PEFJ830401">
+	<Nombre>
+		<NombreCompleto>Juan Pérez Ficticio</NombreCompleto>
+	</Nombre>
+	<Domicilio>                        
+		<Calle>Emiliano Zapata </Calle><NoExterior>3</NoExterior><NoInterior>0</NoInterior>
+		<Colonia>Barrio Arriba</Colonia>
+		<CodigoPostal>68050</CodigoPostal>                   
+	</Domicilio>
+</PersonaFisica><DepositoEnEfectivo montoExcedente="33000" impuestoDeterminado="990" impuestoRecaudado="990" recaudacionPendiente="0" remanentePeriodosAnteriores="0"/></RegistroDeDetalle><EnteroDeOtrasInstituciones nombreInstitucion="HSBC México SA" rfcInstitucion="HMI950125KG8" impuestoEnterado="1116" noOperacion="141849109019" fechaRecepcion="2011-09-23"/></ReporteDeRecaudacionYEnteroDiaria><Totales operacionesRelacionadas="1" importeExcedenteDepositos="33000" importeDeterminadoDepositos="990" importeRecaudadoDepositos="990" importePendienteRecaudacion="0" importeRemanenteDepositos="0" importeEnterado="1116" importeCheques="0"/>
+	</InstitucionDeCredito>
+</DeclaracionInformativaMensualIDE>
