@@ -3,15 +3,20 @@ class ValidarIde < Sinatra::Base
 
   assets do
     serve '/js', from: 'app/javascripts'
-    serve '/css', from: 'app/stylesheets'
-    js :appĺication, [
-      '/js/*.js',
-      '/js/vendor/*.js',
-      '/js/foundation/*.js'
+
+    js :foundation, [
+      '/js/vendor/*',
+      '/js/foundation/foundation.js',
+      '/js/foundation/foundation.*'
+    ]
+
+    js :application, [
+      '/js/*'
      ]
 
+    serve '/css', from: 'app/stylesheets'
     css :application, [
-      '/css/app.css',
+      '/css/app.css'
     ]
 
     js_compression :jsmin
