@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeclaracionInformativaAnualIDE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ide_20080818.xsd" version="1.1" rfcDeclarante="CAF020826YYY" denominacion="Caja Ficticia SA de CV">
+	<RepresentanteLegal rfc="MECF630512NGA" curp="MECF630512HOCYNM04">
+	<Nombre>
+		<NombreCompleto>Felipe Méndez Cordova</NombreCompleto> 
+	</Nombre>
+</RepresentanteLegal><Normal ejercicio="2010"/><InstitucionDeCredito>
+		<Totales operacionesRelacionadas="0" importeExcedenteDepositos="0" importeDeterminadoDepositos="0" importeRecaudadoDepositos="0" importePendienteDepositos="0"/>
+	</InstitucionDeCredito>
+</DeclaracionInformativaAnualIDE>

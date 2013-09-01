@@ -35,15 +35,25 @@ describe ValidadorDetalles do
 
     context 'valid' do
       context '#valida_en_ceros?' do
-        it 'valid zeros' do
+        it 'mensual válida en ceros' do
           declaracion = Declaracion.new(Nokogiri::XML(File.read('spec/files/mensual_ceros_1_1.xml')))
+          validator = ValidadorDetalles.new(declaracion)
+          expect(validator).to be_valida_en_ceros
+        end
+        it 'anual válida en ceros' do
+          declaracion = Declaracion.new(Nokogiri::XML(File.read('spec/files/anual_ceros_1_1.xml')))
           validator = ValidadorDetalles.new(declaracion)
           expect(validator).to be_valida_en_ceros
         end
       end
 
       context '#valida_con_datos?' do
-        it 'valid with data' do
+        it 'mensual válida con datos' do
+          declaracion = Declaracion.new(Nokogiri::XML(File.read('spec/files/mensual_datos_1_1.xml')))
+          validator = ValidadorDetalles.new(declaracion)
+          expect(validator).to be_valida_con_datos
+        end
+        it 'anual válida con datos' do
           declaracion = Declaracion.new(Nokogiri::XML(File.read('spec/files/mensual_datos_1_1.xml')))
           validator = ValidadorDetalles.new(declaracion)
           expect(validator).to be_valida_con_datos

@@ -3,10 +3,10 @@ require 'ostruct'
 
 class ValidadorSuma
 
-  def self.verificar_totales(xml)
+  def self.validar(xml)
     elementos = sumar_elementos(xml)
     totales = xml.css('Totales').first
-    comparar_totales(totales, elementos)
+    @valido = comparar_totales(totales, elementos)
   end
 
   private
