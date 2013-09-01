@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AcuseRechazoAnualIDE version="1.0" fechaPresentacion="2013-07-01T12:25:51.0000000" fechaRechazo="2013-07-01T12:35:37.0625000-05:00" 
+  nombreArchivo="declaracion_anual.xml" tamanoArchivo="1242" sello=" ">
+  <Error clave="90" 
+    descripcion="The 'rfc' attribute is invalid - The value '11' is invalid according to its datatype 'String' - The Pattern constraint failed. Linea: 3 Posición linea: 29" />
+</AcuseRechazoAnualIDE>

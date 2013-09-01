@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AcuseRechazoMensualIDE version="1.0" fechaPresentacion="2013-07-01T13:10:31.0000000" fechaRechazo="2013-07-01T13:33:21.6875000-05:00" 
+  nombreArchivo="declaracion_mensual.xml" tamanoArchivo="48" sello=" ">
+  <Error clave="90" 
+    descripcion="El archivo indicado esta mal formado: Data at the root level is invalid. Line 1, position 1." />
+</AcuseRechazoMensualIDE>
