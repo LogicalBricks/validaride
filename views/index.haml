@@ -24,49 +24,49 @@
 .section-container.tabs{"data-section" => ""}
   %section.section
     %h5.title
-      %a{:href => "#panel1"} Validar declaración
+      %a{href: "#panel1"} Validar declaración
     .content{"data-slug" => "panel1"}
       %form#declaracion{ method: :post, enctype: 'multipart/form-data' }
         .row.collapse
           .large-4.columns
             %label.inline Correo electrónico
           .large-8.columns
-            %input#email{:placeholder => "contacto@validaride.com", :type => "text", name: 'email'}
+            %input#email{placeholder: "contacto@validaride.com", type: "text", name: 'email'}
         .row.collapse
           .large-4.columns
             %label.inline Archivo XML de declaración
           .large-8.columns
-            %input.small.secondary.button#archivo{:placeholder => "contacto@validaride.com", :type => "file", name: 'xml'}
+            %input.small.secondary.button#archivo{placeholder: "contacto@validaride.com", type: "file", name: 'xml'}
         %h5 ¿Cómo puedo conocer el resultado?
         %p
           Cuando tu archivo de declaración sea procesado, te enviaremos por correo electrónico la información detallada de tu declaración; si existe algún error en la misma te lo haremos saber.
-        %button.radius.button{:type => "submit"} Validar declaración
+        %button.radius.button{type: "submit"} Validar declaración
   %section.section
     %h5.title
-      %a{:href => "#panel2"} Verificar acuse de recibo
+      %a{href: "#panel2"} Verificar acuse de recibo
     .content{"data-slug" => "panel2"}
       %form#acuse{ method: :post, enctype: 'multipart/form-data' }
         .row.collapse
           .large-4.columns
             %label.inline Correo electrónico
           .large-8.columns
-            %input#email{:placeholder => "contacto@validaride.com", :type => "text", name: 'email'}
+            %input#email{placeholder: "contacto@validaride.com", type: "text", name: 'email'}
         .row.collapse
           .large-4.columns
             %label.inline Archivo XML de acuse
           .large-8.columns
-            %input.small.secondary.button#archivo{:placeholder => "contacto@validaride.com", :type => "file", name: 'xml'}
+            %input.small.secondary.button#archivo{placeholder: "contacto@validaride.com", type: "file", name: 'xml'}
         %h5 ¿Cómo puedo conocer el resultado?
         %p
           Cuando tu archivo de acuse sea procesado, te enviaremos por correo electrónico la información detallada del mismo.
-        %button.radius.button{:type => "submit"} Validar acuse
+        %button.radius.button{type: "submit"} Validar acuse
 
 #mapModal.reveal-modal
   %h4 Where We Are
   %p
-    %img{:src => "http://placehold.it/800x600"}/
+    %img{src: "http://placehold.it/800x600"}/
   / Any anchor with this class will close the modal. This also inherits certain styles, which can be overriden.
-  %a.close-reveal-modal{:href => "#"} &times;
+  %a.close-reveal-modal{href: "#"} &times;
 
 - content_for :sidebar do
   %h5 Acerca de
@@ -74,7 +74,7 @@
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a pulvinar neque, vitae auctor ligula. Aenean nisi arcu, mollis eget nisl sed, facilisis laoreet libero. In eleifend sodales ornare. Nullam elementum, dui et dictum rutrum, turpis sem congue nisl, in venenatis urna metus vel leo.
   / Clicking this placeholder fires the mapModal Reveal modal
   %p
-    %a{"data-reveal-id" => "mapModal", :href => ""}
-      %img.ideclara{:src => "images/ideclara.png"}
+    %a{"data-reveal-id" => "mapModal", href: ""}
+      %img.ideclara{src: "images/ideclara.png"}
     %br/
-    %a{:href => "idelcara.com"} Conoce IDEclara
+    %a{href: "idelcara.com"} Conoce IDEclara
