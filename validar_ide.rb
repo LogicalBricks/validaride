@@ -19,6 +19,8 @@ class ValidarIde < Sinatra::Base
       '/css/app.css'
     ]
 
+    serve '/fonts', from: 'app/fonts'
+
     js_compression :jsmin
     css_compression :sass
   end
