@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'pry'
 
-class XmlResponseExtractor
+class Acuse
   # Xml tags
   ACUSE_RECEPCION_MENSUAL_TAG = 'AcuseRecepcionMensualIDE'
   ACUSE_RECEPCION_ANUAL_TAG = 'AcuseRecepcionAnualIDE'
