@@ -9,3 +9,7 @@ gem 'coffee-script'
 gem 'sinatra-assetpack'
 gem 'nokogiri'
 gem 'rspec'
+
+# email
+gem 'pony'
+gem 'letter_opener'
