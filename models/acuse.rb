@@ -1,5 +1,4 @@
 require 'nokogiri'
-require 'pry'
 
 class Acuse
   # Xml tags
