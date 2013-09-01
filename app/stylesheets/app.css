@@ -7491,3 +7491,9 @@ a.th {
 /* Used to alter styles for screens at least 1440px wide. */
 /* Apply styles to screens in landscape orientation */
 /* Apply styles to screens in portrait orientation */
+/* line 77, ../sass/app.scss */
+img.ideclara {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+}
