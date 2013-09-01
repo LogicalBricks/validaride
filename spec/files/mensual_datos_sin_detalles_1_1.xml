@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeclaracionInformativaMensualIDE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ide_20080818.xsd" version="1.1" rfcDeclarante="CAF020826YYY" denominacion="Caja Ficticia">
+	<RepresentanteLegal rfc="OERH830104ST0" curp="OERH830104MDMRZR05">
+	<Nombre>
+		<NombreCompleto>Hermes Ojeda Ruiz</NombreCompleto> 
+	</Nombre>
+</RepresentanteLegal><Normal ejercicio="2012" periodo="1"/><InstitucionDeCredito>
+        <Totales operacionesRelacionadas="1" importeExcedenteDepositos="33000" importeDeterminadoDepositos="990" importeRecaudadoDepositos="990" importePendienteRecaudacion="0" importeRemanenteDepositos="0" importeEnterado="1116" importeCheques="0"/>
+	</InstitucionDeCredito>
+</DeclaracionInformativaMensualIDE>
