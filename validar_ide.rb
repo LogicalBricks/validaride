@@ -43,6 +43,13 @@ class ValidarIde < Sinatra::Base
       errors << 'El correo electrónico proporcionado no es válido.' unless valid_email? email
       [email, file, errors]
     end
+
+    def send_email email
+      Pony.mail to:         email,
+                from:       'contacto@validaide.com',
+                subject:    'Archivo de declaración analizado correctamente',
+                html_body:  haml(:declaracion_email, layout: false)
+    end
   end
 
   get '/' do
@@ -54,8 +61,9 @@ class ValidarIde < Sinatra::Base
     # file info in file[:tempfile]
     unless @errors.any?
       # reemplazar la siguiente línea por el llamado correcto
-      if Random.rand(0..1) == 1
+      if Random.rand(1..1) == 1
         @info = "El archivo ha sido procesado exitosamente. Un correo electrónico será enviado a #{email}."
+        send_email email
       else
         @errors << 'Error al procesar el archivo XML.'
       end
