@@ -8,22 +8,35 @@
   analizará tu archivo
   %abbr{title: "Formato de declaraciones informativas de IDE"} XML
   y te informará sobre fallos o errores que haya en el mismo. Evita problemas con Hacienda, corrobora que tu proveedor te brinda su servicio correctamente.
+
+- if @info
+  .alert-box.success
+    = @info
+
+- if @errors.try(:any?)
+  .alert-box.alert
+    Tu solicitud no pudo ser procesada por las siguientes razones:
+    %ul
+      - @errors.each do |error|
+        %li= error
+
+
 .section-container.tabs{"data-section" => ""}
   %section.section
     %h5.title
       %a{:href => "#panel1"} Validar declaración
     .content{"data-slug" => "panel1"}
-      %form
+      %form#declaracion{ method: :post, enctype: 'multipart/form-data' }
         .row.collapse
           .large-4.columns
             %label.inline Correo electrónico
           .large-8.columns
-            %input#yourEmail{:placeholder => "contacto@validaride.com", :type => "text"}
+            %input#email{:placeholder => "contacto@validaride.com", :type => "text", name: 'email'}
         .row.collapse
           .large-4.columns
             %label.inline Archivo XML de declaración
           .large-8.columns
-            %input.small.secondary.button#yourEmail{:placeholder => "contacto@validaride.com", :type => "file"}
+            %input.small.secondary.button#archivo{:placeholder => "contacto@validaride.com", :type => "file", name: 'xml'}
         %h5 ¿Cómo puedo conocer el resultado?
         %p
           Cuando tu archivo de declaración sea procesado, te enviaremos por correo electrónico la información detallada de tu declaración; si existe algún error en la misma te lo haremos saber.
@@ -32,17 +45,17 @@
     %h5.title
       %a{:href => "#panel2"} Verificar acuse de recibo
     .content{"data-slug" => "panel2"}
-      %form
+      %form#acuse{ method: :post, enctype: 'multipart/form-data' }
         .row.collapse
           .large-4.columns
             %label.inline Correo electrónico
           .large-8.columns
-            %input#yourEmail{:placeholder => "contacto@validaride.com", :type => "text"}
+            %input#email{:placeholder => "contacto@validaride.com", :type => "text", name: 'email'}
         .row.collapse
           .large-4.columns
             %label.inline Archivo XML de acuse
           .large-8.columns
-            %input.small.secondary.button#yourEmail{:placeholder => "contacto@validaride.com", :type => "file"}
+            %input.small.secondary.button#archivo{:placeholder => "contacto@validaride.com", :type => "file", name: 'xml'}
         %h5 ¿Cómo puedo conocer el resultado?
         %p
           Cuando tu archivo de acuse sea procesado, te enviaremos por correo electrónico la información detallada del mismo.
