@@ -3,7 +3,8 @@ require 'ostruct'
 
 class ValidadorSuma
 
-  def self.validar(xml)
+  def self.validar(declaracion)
+    xml = declaracion.xml
     elementos = sumar_elementos(xml)
     totales = xml.css('Totales').first
     @valido = comparar_totales(totales, elementos)
