@@ -9,3 +9,7 @@ gem 'sinatra-assetpack'
 gem 'nokogiri'
 gem 'rspec'
 gem 'pry'
+
+# email
+gem 'pony'
+gem 'letter_opener'
