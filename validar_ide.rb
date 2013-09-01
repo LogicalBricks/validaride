@@ -1,4 +1,5 @@
 class ValidarIde < Sinatra::Base
+  helpers Sinatra::ContentFor
   register Sinatra::AssetPack
 
   assets do

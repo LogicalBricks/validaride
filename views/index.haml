@@ -1,155 +1,67 @@
-%nav.top-bar
-  %ul.title-area
-    / Title Area
-    %li.name
-      %h1
-        %a.foundicon-graph{:href => "/"}
-          Validar IDE
-    %li.toggle-topbar.menu-icon
-      %a{:href => "#"}
-        %span menu
-  %section.top-bar-section
-    / Right Nav Section
-    %ul.right
-      %li.divider
-      %li.has-dropdown
-        %a{:href => "#"} Main Item 1
-        %ul.dropdown
-          %li
-            %label Section Name
-          %li.has-dropdown
-            %a{:href => "#"} Has Dropdown, Level 1
-            %ul.dropdown
-              %li
-                %a{:href => "#"} Dropdown Options
-              %li
-                %a{:href => "#"} Dropdown Options
-              %li
-                %a{:href => "#"} Level 2
-              %li
-                %a{:href => "#"} Subdropdown Option
-              %li
-                %a{:href => "#"} Subdropdown Option
-              %li
-                %a{:href => "#"} Subdropdown Option
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li.divider
-          %li
-            %label Section Name
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li.divider
-          %li
-            %a{:href => "#"} See all &rarr;
-      %li.divider
-      %li
-        %a{:href => "#"} Main Item 2
-      %li.divider
-      %li.has-dropdown
-        %a{:href => "#"} Main Item 3
-        %ul.dropdown
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li
-            %a{:href => "#"} Dropdown Option
-          %li.divider
-          %li
-            %a{:href => "#"} See all &rarr;
-/ End Top Bar
-/ Main Page Content and Sidebar
-.row
-  / Contact Details
-  .large-9.columns
-    %h3 ¿Qué es validar IDE?
-    %p
-      %em Validar IDE
-      es un servicio gratuito que te permite conocer los detalles de tu declaración informativa del
-      %abbr{title: "Impuesto a los Depósitos en Efectivo"} IDE
-      ; no importa si tu declaración la realizas por tus propios medios o con algún proveedor, 
-      %em Validar IDE
-      analizará tu archivo
-      %abbr{title: "Formato de declaraciones informativas de IDE"} XML
-      y te informará sobre fallos o errores que haya en el mismo. Evita problemas con Hacienda, corrobora que tu proveedor te brinda su servicio correctamente.
-    .section-container.tabs{"data-section" => ""}
-      %section.section
-        %h5.title
-          %a{:href => "#panel1"} Validar declaración
-        .content{"data-slug" => "panel1"}
-          %form
-            .row.collapse
-              .large-4.columns
-                %label.inline Correo electrónico
-              .large-8.columns
-                %input#yourEmail{:placeholder => "contacto@validaride.com", :type => "text"}
-            .row.collapse
-              .large-4.columns
-                %label.inline Archivo XML de declaración
-              .large-8.columns
-                %input.small.secondary.button#yourEmail{:placeholder => "contacto@validaride.com", :type => "file"}
-            %h5 ¿Cómo puedo conocer el resultado?
-            %p
-              Cuando tu archivo de declaración sea procesado, te enviaremos por correo electrónico la información detallada de tu declaración; si existe algún error en la misma te lo haremos saber.
-            %button.radius.button{:type => "submit"} Validar declaración
-      %section.section
-        %h5.title
-          %a{:href => "#panel2"} Verificar acuse de recibo
-        .content{"data-slug" => "panel2"}
-          %form
-            .row.collapse
-              .large-4.columns
-                %label.inline Correo electrónico
-              .large-8.columns
-                %input#yourEmail{:placeholder => "contacto@validaride.com", :type => "text"}
-            .row.collapse
-              .large-4.columns
-                %label.inline Archivo XML de acuse
-              .large-8.columns
-                %input.small.secondary.button#yourEmail{:placeholder => "contacto@validaride.com", :type => "file"}
-            %h5 ¿Cómo puedo conocer el resultado?
-            %p
-              Cuando tu archivo de acuse sea procesado, te enviaremos por correo electrónico la información detallada del mismo.
-            %button.radius.button{:type => "submit"} Validar acuse
-  / End Contact Details
-  / Sidebar
-  .large-3.columns.panel
-    %h5 Acerca de
-    %p
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a pulvinar neque, vitae auctor ligula. Aenean nisi arcu, mollis eget nisl sed, facilisis laoreet libero. In eleifend sodales ornare. Nullam elementum, dui et dictum rutrum, turpis sem congue nisl, in venenatis urna metus vel leo.
-    / Clicking this placeholder fires the mapModal Reveal modal
-    %p
-      %a{"data-reveal-id" => "mapModal", :href => ""}
-        %img.ideclara{:src => "images/ideclara.png"}
-      %br/
-      %a{:href => "idelcara.com"} Conoce IDEclara
-  / End Sidebar
-/ End Main Content and Sidebar
-/ Footer
-%footer.row
-  .large-12.columns
-    %hr/
-    .row
-      .large-6.columns
-        © Copyright
-        %a{href: 'http://logicalbricks.com'}LogicalBricks Solutions.
-        2013.
-      .large-6.columns
-        %ul.inline-list.right
-          %li
-            %a{:href => "#"} ¿No tienes cómo enviar tus declaraciones?
-/ End Footer
-/ Map Modal
+%h3 ¿Qué es validar IDE?
+%p
+  %em Validar IDE
+  es un servicio gratuito que te permite conocer los detalles de tu declaración informativa del
+  %abbr{title: "Impuesto a los Depósitos en Efectivo"} IDE
+  ; no importa si tu declaración la realizas por tus propios medios o con algún proveedor, 
+  %em Validar IDE
+  analizará tu archivo
+  %abbr{title: "Formato de declaraciones informativas de IDE"} XML
+  y te informará sobre fallos o errores que haya en el mismo. Evita problemas con Hacienda, corrobora que tu proveedor te brinda su servicio correctamente.
+.section-container.tabs{"data-section" => ""}
+  %section.section
+    %h5.title
+      %a{:href => "#panel1"} Validar declaración
+    .content{"data-slug" => "panel1"}
+      %form
+        .row.collapse
+          .large-4.columns
+            %label.inline Correo electrónico
+          .large-8.columns
+            %input#yourEmail{:placeholder => "contacto@validaride.com", :type => "text"}
+        .row.collapse
+          .large-4.columns
+            %label.inline Archivo XML de declaración
+          .large-8.columns
+            %input.small.secondary.button#yourEmail{:placeholder => "contacto@validaride.com", :type => "file"}
+        %h5 ¿Cómo puedo conocer el resultado?
+        %p
+          Cuando tu archivo de declaración sea procesado, te enviaremos por correo electrónico la información detallada de tu declaración; si existe algún error en la misma te lo haremos saber.
+        %button.radius.button{:type => "submit"} Validar declaración
+  %section.section
+    %h5.title
+      %a{:href => "#panel2"} Verificar acuse de recibo
+    .content{"data-slug" => "panel2"}
+      %form
+        .row.collapse
+          .large-4.columns
+            %label.inline Correo electrónico
+          .large-8.columns
+            %input#yourEmail{:placeholder => "contacto@validaride.com", :type => "text"}
+        .row.collapse
+          .large-4.columns
+            %label.inline Archivo XML de acuse
+          .large-8.columns
+            %input.small.secondary.button#yourEmail{:placeholder => "contacto@validaride.com", :type => "file"}
+        %h5 ¿Cómo puedo conocer el resultado?
+        %p
+          Cuando tu archivo de acuse sea procesado, te enviaremos por correo electrónico la información detallada del mismo.
+        %button.radius.button{:type => "submit"} Validar acuse
+
 #mapModal.reveal-modal
   %h4 Where We Are
   %p
     %img{:src => "http://placehold.it/800x600"}/
   / Any anchor with this class will close the modal. This also inherits certain styles, which can be overriden.
   %a.close-reveal-modal{:href => "#"} &times;
+
+- content_for :sidebar do
+  %h5 Acerca de
+  %p
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a pulvinar neque, vitae auctor ligula. Aenean nisi arcu, mollis eget nisl sed, facilisis laoreet libero. In eleifend sodales ornare. Nullam elementum, dui et dictum rutrum, turpis sem congue nisl, in venenatis urna metus vel leo.
+  / Clicking this placeholder fires the mapModal Reveal modal
+  %p
+    %a{"data-reveal-id" => "mapModal", :href => ""}
+      %img.ideclara{:src => "images/ideclara.png"}
+    %br/
+    %a{:href => "idelcara.com"} Conoce IDEclara
