@@ -1,13 +1,13 @@
 require 'spec_helper'
-require_relative '../models/xml_response_extractor'
+require_relative '../models/acuse'
 
-describe XmlResponseExtractor do
+describe Acuse do
   context 'con archivo inválido'
 
   context 'versión 1.0' do
     context 'acuse mensual' do
       context 'acuse de aceptación' do
-        subject { XmlResponseExtractor.new(
+        subject { Acuse.new(
           Nokogiri::XML(
             File.read('spec/files/acuses/acuse_recepcion_mensual_1_0.xml')
           ))}
@@ -72,7 +72,7 @@ describe XmlResponseExtractor do
       end
 
       context 'acuse de rechazo' do
-        subject { XmlResponseExtractor.new(
+        subject { Acuse.new(
           Nokogiri::XML(
             File.read('spec/files/acuses/acuse_rechazo_mensual_malformado_1_0.xml')
           ))}
@@ -109,7 +109,7 @@ describe XmlResponseExtractor do
 
     context 'acuse anual' do
       context 'acuse de aceptación' do
-        subject { XmlResponseExtractor.new(
+        subject { Acuse.new(
           Nokogiri::XML(
             File.read('spec/files/acuses/acuse_recepcion_anual_1_0.xml')
           ))}
@@ -155,7 +155,7 @@ describe XmlResponseExtractor do
       end # context acuse de aceptación
 
       context 'acuse de rechazo' do
-        subject { XmlResponseExtractor.new(
+        subject { Acuse.new(
           Nokogiri::XML(
             File.read('spec/files/acuses/acuse_rechazo_anual_1_0.xml')
           ))}
