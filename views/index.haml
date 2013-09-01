@@ -1,66 +1,80 @@
-/ Header and Nav
-.row
-  %nav.top-bar
-    %ul.title-area
-      %li.name
-        %h1
-          %a{href: '#'}ValidarIDE
-.row
-  .large-3.columns
-    %h1
-      %img{:src => "http://placehold.it/400x100&text=Logo"}/
-  .large-9.columns
-    %ul.button-group.right
-      %li
-        %a.button{:href => "#"} Link 1
-      %li
-        %a.button{:href => "#"} Link 2
-      %li
-        %a.button{:href => "#"} Link 3
-      %li
-        %a.button{:href => "#"} Link 4
-/ End Header and Nav
-/ First Band (Image)
-.row
-  .large-12.columns
-    %img{:src => "http://placehold.it/1000x400&text=[img]"}/
-    %hr/
-/ Second Band (Image Left with Text)
-.row
-  .large-4.columns
-    %img{:src => "http://placehold.it/400x300&text=[img]"}/
-  .large-8.columns
-    %h4 This is a content section.
-    .row
-      .large-6.columns
-        %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
-      .large-6.columns
-        %p Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
-/ Third Band (Image Right with Text)
-.row
-  .large-8.columns
-    %h4 This is a content section.
-    %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
-    %p Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
-  .large-4.columns
-    %img{:src => "http://placehold.it/400x300&text=[img]"}/
-/ Footer
-%footer.row
-  .large-12.columns
-    %hr/
-    .row
-      .large-6.columns
+%h3 ¿Qué es validar IDE?
+%p
+  %em Validar IDE
+  es un servicio gratuito que te permite conocer los detalles de tu declaración informativa del
+  %abbr{title: "Impuesto a los Depósitos en Efectivo"} IDE
+  ; no importa si tu declaración la realizas por tus propios medios o con algún proveedor, 
+  %em Validar IDE
+  analizará tu archivo
+  %abbr{title: "Formato de declaraciones informativas de IDE"} XML
+  y te informará sobre fallos o errores que haya en el mismo. Evita problemas con Hacienda, corrobora que tu proveedor te brinda su servicio correctamente.
+
+- if @info
+  .alert-box.success
+    = @info
+
+- if @errors.try(:any?)
+  .alert-box.alert
+    Tu solicitud no pudo ser procesada por las siguientes razones:
+    %ul
+      - @errors.each do |error|
+        %li= error
+
+
+.section-container.tabs{"data-section" => ""}
+  %section.section
+    %h5.title
+      %a{href: "#panel1"} Validar declaración
+    .content{"data-slug" => "panel1"}
+      %form#declaracion{ method: :post, enctype: 'multipart/form-data' }
+        .row.collapse
+          .large-4.columns
+            %label.inline Correo electrónico
+          .large-8.columns
+            %input#email{placeholder: "contacto@validaride.com", type: "text", name: 'email'}
+        .row.collapse
+          .large-4.columns
+            %label.inline Archivo XML de declaración
+          .large-8.columns
+            %input.small.secondary.button#archivo{placeholder: "contacto@validaride.com", type: "file", name: 'xml'}
+        %h5 ¿Cómo puedo conocer el resultado?
         %p
-          © Copyright
-          %a{href: 'http://logicalbricks.com'}LogicalBricks Solutions.
-          2013.
-      .large-6.columns
-        %ul.inline-list.right
-          %li
-            %a{:href => "#"} Link 1
-          %li
-            %a{:href => "#"} Link 2
-          %li
-            %a{:href => "#"} Link 3
-          %li
-            %a{:href => "#"} Link 4
+          Cuando tu archivo de declaración sea procesado, te enviaremos por correo electrónico la información detallada de tu declaración; si existe algún error en la misma te lo haremos saber.
+        %button.radius.button{type: "submit"} Validar declaración
+  %section.section
+    %h5.title
+      %a{href: "#panel2"} Verificar acuse de recibo
+    .content{"data-slug" => "panel2"}
+      %form#acuse{ method: :post, enctype: 'multipart/form-data' }
+        .row.collapse
+          .large-4.columns
+            %label.inline Correo electrónico
+          .large-8.columns
+            %input#email{placeholder: "contacto@validaride.com", type: "text", name: 'email'}
+        .row.collapse
+          .large-4.columns
+            %label.inline Archivo XML de acuse
+          .large-8.columns
+            %input.small.secondary.button#archivo{placeholder: "contacto@validaride.com", type: "file", name: 'xml'}
+        %h5 ¿Cómo puedo conocer el resultado?
+        %p
+          Cuando tu archivo de acuse sea procesado, te enviaremos por correo electrónico la información detallada del mismo.
+        %button.radius.button{type: "submit"} Validar acuse
+
+#mapModal.reveal-modal
+  %h4 Where We Are
+  %p
+    %img{src: "http://placehold.it/800x600"}/
+  / Any anchor with this class will close the modal. This also inherits certain styles, which can be overriden.
+  %a.close-reveal-modal{href: "#"} &times;
+
+- content_for :sidebar do
+  %h5 Acerca de
+  %p
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a pulvinar neque, vitae auctor ligula. Aenean nisi arcu, mollis eget nisl sed, facilisis laoreet libero. In eleifend sodales ornare. Nullam elementum, dui et dictum rutrum, turpis sem congue nisl, in venenatis urna metus vel leo.
+  / Clicking this placeholder fires the mapModal Reveal modal
+  %p
+    %a{"data-reveal-id" => "mapModal", href: ""}
+      %img.ideclara{src: "images/ideclara.png"}
+    %br/
+    %a{href: "idelcara.com"} Conoce IDEclara
