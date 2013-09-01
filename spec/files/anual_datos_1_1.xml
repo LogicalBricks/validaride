@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeclaracionInformativaAnualIDE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ide_20080818.xsd" version="1.1" rfcDeclarante="CAF020826YYY" denominacion="Caja Ficticia SA de CV">
+	<RepresentanteLegal rfc="OERH830104ST0" curp="OERH830104HYNLZR06">
+	<Nombre>
+		<NombreCompleto>Hermes Ojeda Ruiz</NombreCompleto> 
+	</Nombre>
+</RepresentanteLegal><Normal ejercicio="2011"/><InstitucionDeCredito>
+		<RegistroDeDetalle><PersonaFisica rfc="PEFJ830401" curp="PEFJ830401HYNSDV05">
+	<Nombre>
+		<NombreCompleto>Juan Pérez Ficticio</NombreCompleto>
+	</Nombre>
+	<Domicilio>                        
+		<Calle>32</Calle><NoExterior>165</NoExterior>
+		<Colonia>San Juan</Colonia>
+		<CodigoPostal>68033</CodigoPostal>                   
+	</Domicilio>
+</PersonaFisica><DepositoEnEfectivo montoExcedente="2500" impuestoDeterminado="75" impuestoRecaudado="75" recaudacionPendiente="0"/></RegistroDeDetalle><RegistroDeDetalle><PersonaFisica rfc="LOFJ680218TT0" curp="LOFJ680218HYNXXN04">
+	<Nombre>
+		<NombreCompleto>Juan López Ficticio</NombreCompleto>
+	</Nombre>
+	<Domicilio>                        
+		<Calle>Reforma</Calle><NoExterior>SIN NUMERO</NoExterior>
+		<Colonia>San Pedro</Colonia>
+		<CodigoPostal>68020</CodigoPostal>                   
+	</Domicilio>
+</PersonaFisica><DepositoEnEfectivo montoExcedente="5500" impuestoDeterminado="165" impuestoRecaudado="165" recaudacionPendiente="0"/></RegistroDeDetalle><Totales operacionesRelacionadas="2" importeExcedenteDepositos="8000" importeDeterminadoDepositos="240" importeRecaudadoDepositos="240" importePendienteDepositos="0"/>
+	</InstitucionDeCredito>
+</DeclaracionInformativaAnualIDE>

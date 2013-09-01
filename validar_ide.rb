@@ -44,11 +44,20 @@ class ValidarIde < Sinatra::Base
       [email, file, errors]
     end
 
-    def send_email email
+    def send_declaracion_email email, declaracion
+      @declaracion = declaracion
       Pony.mail to:         email,
                 from:       'contacto@validaide.com',
                 subject:    'Archivo de declaración analizado correctamente',
                 html_body:  haml(:declaracion_email, layout: false)
+    end
+
+    def send_acuse_email email, acuse
+      @acuse = acuse
+      Pony.mail to:         email,
+                from:       'contacto@validaide.com',
+                subject:    'Archivo de acuse analizado correctamente',
+                html_body:  haml(:acuse_email, layout: false)
     end
   end
 
@@ -58,16 +67,50 @@ class ValidarIde < Sinatra::Base
 
   post '/' do
     email, file, @errors = process_post_data
+    puts file[:tempfile]
     # file info in file[:tempfile]
     unless @errors.any?
       # reemplazar la siguiente línea por el llamado correcto
       if Random.rand(1..1) == 1
-        @info = "El archivo ha sido procesado exitosamente. Un correo electrónico será enviado a #{email}."
-        send_email email
+        @info = "Tu archivo está procesado. Un correo electrónico será enviado a #{email}"
+        send_declaracion_email email, Declaracion.new
+        # send_acuse_email email, Declaracion.new
       else
-        @errors << 'Error al procesar el archivo XML.'
+        @errors << 'Tu archivo no corresponde a una declaración de IDE'
       end
     end
     haml :index, format: :html5
   end
+end
+
+# Dummy class for test purposes
+class Declaracion
+  attr_accessor :resultado_pruebas
+
+  def initialize
+    @resultado_pruebas = [Resultado.new('Prueba 1', true), Resultado.new('Prueba 2', false)]
+  end
+
+  def ejercicio; 2013 end
+  def periodo; 'marzo' end
+  def en_ceros; true end
+  def con_datos; false end
+  def rfc; 'LSO110121SY0' end
+  def denominacion; 'Lolita Ritz SC de RL de CV' end
+  def numero_elementos; 0 end
+  def version; '1.1' end
+  def mensual?; true end
+  def en_ceros?; true end
+  def normal?; true end
+end
+
+class Resultado
+  attr_accessor :exito, :nombre
+
+  def initialize nombre, exito
+    @exito = exito
+    @nombre = nombre
+  end
+
+  def descripcion; 'Descripción de la prueba' end
 end

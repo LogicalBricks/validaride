@@ -32,7 +32,7 @@ class Acuse
   end
 
   def rechazo?
-    not aceptacion? 
+    not aceptacion?
   end
 
   def anual?
@@ -46,7 +46,7 @@ class Acuse
   ########
   private
   #######
-  
+
   # Parsea el archivo xml del acuse
   def load_xml
     case tipo_de_acuse?
@@ -56,7 +56,7 @@ class Acuse
     when RECHAZO_MENSUAL then load_rechazo_mensual
     else
      raise 'No es ningún tipo de acuse conocido.'
-    end 
+    end
     return true
   rescue Exception => e
     puts e.message
@@ -80,7 +80,7 @@ class Acuse
     return ''
   end
 
-  # Carga desde el archivo xml los datos comunes 
+  # Carga desde el archivo xml los datos comunes
   # a un archivo de aceptación
   def load_aceptacion aceptacion_tag, &block
     @aceptacion = true
