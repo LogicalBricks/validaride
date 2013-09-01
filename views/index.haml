@@ -120,18 +120,16 @@
             %button.radius.button{:type => "submit"} Validar acuse
   / End Contact Details
   / Sidebar
-  .large-3.columns
-    %h5 Map
+  .large-3.columns.panel
+    %h5 Acerca de
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a pulvinar neque, vitae auctor ligula. Aenean nisi arcu, mollis eget nisl sed, facilisis laoreet libero. In eleifend sodales ornare. Nullam elementum, dui et dictum rutrum, turpis sem congue nisl, in venenatis urna metus vel leo.
     / Clicking this placeholder fires the mapModal Reveal modal
     %p
       %a{"data-reveal-id" => "mapModal", :href => ""}
-        %img{:src => "http://placehold.it/400x280"}/
+        %img.ideclara{:src => "images/ideclara.png"}
       %br/
-      %a{"data-reveal-id" => "mapModal", :href => ""} View Map
-    %p
-      123 Awesome St.
-      %br/
-      Barsoom, MA 95155
+      %a{:href => "idelcara.com"} Conoce IDEclara
   / End Sidebar
 / End Main Content and Sidebar
 / Footer
@@ -145,8 +143,6 @@
         2013.
       .large-6.columns
         %ul.inline-list.right
-          %li
-            %a{:href => "#"} Acerca de
           %li
             %a{:href => "#"} ¿No tienes cómo enviar tus declaraciones?
 / End Footer

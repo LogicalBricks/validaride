@@ -15,6 +15,9 @@ class ValidarIde < Sinatra::Base
      ]
 
     serve '/css', from: 'app/stylesheets'
+
+    serve '/images', from: 'app/images'
+
     css :application, [
       '/css/app.css'
     ]
