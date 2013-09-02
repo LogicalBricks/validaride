@@ -6,7 +6,7 @@ class ValidadorNuevaVersion
     if declaracion.mensual?
      validar_mensual(declaracion)
     else
-      not ( declaracion.ejercicio >= 2013 and declaracion.version == '1.1')
+      not ( declaracion.ejercicio.to_i >= 2013 and declaracion.version == '1.1')
     end
   end
 
@@ -14,10 +14,10 @@ class ValidadorNuevaVersion
 
   def self.validar_mensual(declaracion)
     if declaracion.version == '1.1'
-      if declaracion.ejercicio > 2013
+      if declaracion.ejercicio.to_i > 2013
         return false
-      elsif declaracion.ejercicio == 2013
-        declaracion.periodo >= 7 ? false : true
+      elsif declaracion.ejercicio.to_i == 2013
+        declaracion.periodo.to_i >= 7 ? false : true
       else
         true
       end

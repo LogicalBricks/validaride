@@ -1,13 +1,18 @@
 require_relative 'declaracion'
 require_relative 'validador_detalles'
 require_relative 'validador_suma'
+require_relative 'validador_nueva_version'
+require_relative 'validador_numeros_cuenta'
 require 'ostruct'
 
 class ReporteDeclaracion
   def initialize(xml)
     @xml = xml
     @pruebas = []
-    generar_reporte(xml)
+    @valido  = generar_reporte(xml)
+  rescue Exception => e
+    puts e.message
+    @valido = false
   end
 
   def valido?
@@ -70,6 +75,7 @@ class ReporteDeclaracion
   def generar_reporte(xml)
     @declaracion = Declaracion.new(xml)
     generar_tests
+    @valido = true
   end
 
   def generar_tests
@@ -83,6 +89,16 @@ class ReporteDeclaracion
                 'Verificar la integridad de las sumas entre los detalles y los totales de la declaración',
                 ValidadorSuma.validar(@declaracion)
                ) if detalles
+    # validar si la declaración se generó con la versión indicada
+    agrega_test( 'Verificar Versión',
+                'Verificar que el archivo de la declaración se haya elaborado con la versión correspondiente según lo marcado en los lineamientos del SAT',
+                ValidadorNuevaVersion.validar(@declaracion)
+               )
+    # validar 
+    agrega_test( 'Validar números de Cuenta V 2.0',
+                'Valida que sea un número de cuenta válido si es una declaración normal elaborada con la versión 2.0',
+                ValidadorNumerosCuenta.validar(@declaracion)
+                )
   end
 
   def agrega_test(nombre, descripcion, exito)
