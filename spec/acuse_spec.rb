@@ -1,5 +1,6 @@
 require 'spec_helper'
 require_relative '../models/acuse'
+require 'date'
 
 describe Acuse do
   context 'con archivo inválido'
@@ -27,7 +28,7 @@ describe Acuse do
           end
 
           it 'debe extraer la fecha de presentación de la declaración' do
-            subject.fecha_presentacion.should eq("2013-07-01T14:38:25.0000000")
+            subject.fecha_presentacion.should eq(DateTime.parse "2013-07-01T14:38:25.0000000")
           end
 
           it 'debe extraer el folio de recepción' do
@@ -126,7 +127,7 @@ describe Acuse do
             subject.denominacion.should eq("Caja de Prueba SA de CV")
           end
           it 'debe extraer la fecha de presentación de la declaración' do
-            subject.fecha_presentacion.should eq("2013-02-01T17:22:00.0000000")
+            subject.fecha_presentacion.should eq(DateTime.parse "2013-02-01T17:22:00.0000000")
           end
           it 'debe extraer el folio de recepción' do
             subject.folio_recepcion.should eq("74123")
