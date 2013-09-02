@@ -21,7 +21,7 @@ describe ValidadorNuevaVersion do
 
 
       it 'nueva versión 1.1' do
-        declaracion = double('declaracion', periodo: 10, ejercicio: 2013, version: '1.1', 'mensual?' => true)
+        declaracion = double('declaracion', periodo: 1, ejercicio: 2014, version: '1.1', 'mensual?' => true)
         expect(ValidadorNuevaVersion.validar(declaracion)).to eq(false)
       end
     end
