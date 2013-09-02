@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'date'
 
 class Acuse
   # Xml tags
@@ -88,7 +89,7 @@ class Acuse
     @version = current_tag[:version]
     @rfc = current_tag[:rfc]
     @denominacion = current_tag[:denominacion]
-    @fecha_presentacion = current_tag[:fechaPresentacion ]
+    @fecha_presentacion = DateTime.parse current_tag[:fechaPresentacion]
     @folio_recepcion = current_tag[:folioRecepcion]
     @numero_operacion = current_tag[:numeroOperacion]
     @archivo_declaracion = current_tag[:nombreArchivo]
