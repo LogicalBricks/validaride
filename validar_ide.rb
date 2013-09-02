@@ -1,3 +1,8 @@
+require_relative 'models/reporte_general'
+require_relative 'models/reporte_declaracion'
+require_relative 'models/acuse'
+require 'date'
+
 class ValidarIde < Sinatra::Base
   helpers Sinatra::ContentFor
   register Sinatra::AssetPack
@@ -43,7 +48,7 @@ class ValidarIde < Sinatra::Base
       errors << 'El correo electrónico proporcionado no es válido.' unless valid_email? email
       [email, file, errors]
     end
-
+    
     def send_declaracion_email email, declaracion
       @declaracion = declaracion
       Pony.mail to:         email,
@@ -59,6 +64,12 @@ class ValidarIde < Sinatra::Base
                 subject:    'Archivo de acuse analizado correctamente',
                 html_body:  haml(:acuse_email, layout: false)
     end
+
+    def send_email email, reporte
+      send_declaracion_email email, reporte if reporte.is_a? ReporteDeclaracion
+      send_acuse_email email, reporte if reporte.is_a? Acuse
+    end
+
   end
 
   get '/' do
@@ -67,14 +78,11 @@ class ValidarIde < Sinatra::Base
 
   post '/' do
     email, file, @errors = process_post_data
-    puts file[:tempfile]
-    # file info in file[:tempfile]
     unless @errors.any?
-      # reemplazar la siguiente línea por el llamado correcto
-      if Random.rand(1..1) == 1
+      reporte_general = ReporteGeneral.new(file[:tempfile])
+      if reporte_general.reporte
         @info = "Tu archivo está procesado. Un correo electrónico será enviado a #{email}"
-        send_declaracion_email email, Declaracion.new
-        # send_acuse_email email, Declaracion.new
+        send_email email, reporte_general.reporte
       else
         @errors << 'Tu archivo no corresponde a una declaración de IDE'
       end
