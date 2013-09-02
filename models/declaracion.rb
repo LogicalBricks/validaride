@@ -75,7 +75,7 @@ class Declaracion
   end
 
   def nodo_normal_o_complementaria
-    nodo_normal || nodo_complementaria
+    @nodo_normal_o_complementaria = (nodo_normal || nodo_complementaria)
   end
 
   def nodo_normal
