@@ -9,10 +9,20 @@ class ReporteDeclaracion
   def initialize(xml)
     @xml = xml
     @pruebas = []
+    @errores = 0
     @valido  = generar_reporte(xml)
+    @errores = @pruebas.reduce(0) { |sum, obj| (sum + 1) if not obj.exito } || 0
   rescue Exception => e
     puts e.message
     @valido = false
+  end
+
+  def sin_errores?
+    @errores == 0
+  end
+
+  def errores
+    @errores
   end
 
   def valido?
