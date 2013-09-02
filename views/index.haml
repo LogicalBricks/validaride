@@ -39,27 +39,8 @@
             %input.small.secondary.button#archivo{placeholder: "contacto@validaride.com", type: "file", name: 'xml'}
         %h5 ¿Cómo puedo conocer el resultado?
         %p
-          Cuando tu archivo de declaración sea procesado, te enviaremos por correo electrónico la información detallada de tu declaración; si existe algún error en la misma te lo haremos saber.
+          Cuando tu archivo de declaración sea procesado, te enviaremos por correo electrónico la información detallada; si existe algún error en la misma te lo haremos saber.
         %button.radius.button{type: "submit"} Validar declaración
-  %section.section
-    %h5.title
-      %a{href: "#panel2"} Verificar acuse de recibo
-    .content{"data-slug" => "panel2"}
-      %form#acuse{ method: :post, enctype: 'multipart/form-data' }
-        .row.collapse
-          .large-4.columns
-            %label.inline Correo electrónico
-          .large-8.columns
-            %input#email{placeholder: "contacto@validaride.com", type: "text", name: 'email'}
-        .row.collapse
-          .large-4.columns
-            %label.inline Archivo XML de acuse
-          .large-8.columns
-            %input.small.secondary.button#archivo{placeholder: "contacto@validaride.com", type: "file", name: 'xml'}
-        %h5 ¿Cómo puedo conocer el resultado?
-        %p
-          Cuando tu archivo de acuse sea procesado, te enviaremos por correo electrónico la información detallada del mismo.
-        %button.radius.button{type: "submit"} Validar acuse
 
 #mapModal.reveal-modal
   %h4 Where We Are
