@@ -90,35 +90,3 @@ class ValidarIde < Sinatra::Base
     haml :index, format: :html5
   end
 end
-
-# Dummy class for test purposes
-class Declaracion
-  attr_accessor :resultado_pruebas
-
-  def initialize
-    @resultado_pruebas = [Resultado.new('Prueba 1', true), Resultado.new('Prueba 2', false)]
-  end
-
-  def ejercicio; 2013 end
-  def periodo; 'marzo' end
-  def en_ceros; true end
-  def con_datos; false end
-  def rfc; 'LSO110121SY0' end
-  def denominacion; 'Lolita Ritz SC de RL de CV' end
-  def numero_elementos; 0 end
-  def version; '1.1' end
-  def mensual?; true end
-  def en_ceros?; true end
-  def normal?; true end
-end
-
-class Resultado
-  attr_accessor :exito, :nombre
-
-  def initialize nombre, exito
-    @exito = exito
-    @nombre = nombre
-  end
-
-  def descripcion; 'Descripción de la prueba' end
-end
