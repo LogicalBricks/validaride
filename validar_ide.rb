@@ -44,7 +44,7 @@ class ValidarIde < Sinatra::Base
       errors = []
       email = params['email']
       file = params['xml']
-      errors << 'El archivo proporcionado no es un archivo XML.' unless file and file[:type] == 'text/xml'
+      errors << 'El archivo proporcionado no es un archivo XML.' unless file and  ['application/xml', 'text/xml'].include? file[:type]
       errors << 'El correo electrónico proporcionado no es válido.' unless valid_email? email
       [email, file, errors]
     end
